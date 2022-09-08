@@ -4,7 +4,7 @@ import Movie from 'App/Models/Movie'
 export default class MoviesController {
   public async index({ request, response }: HttpContextContract) {
     const projects = await Movie.query()
-    return response.json({ projects })
+    return response.ok(projects)
   }
   public async store({ request, response }: HttpContextContract) {
     const data = request.body()
