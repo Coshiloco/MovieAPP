@@ -7,19 +7,10 @@ export default class MoviesController {
     return response.json({ projects })
   }
   public async store({ request, response }: HttpContextContract) {
-    const data = request.only([
-      'title',
-      'description',
-      'year',
-      'category',
-      'rating',
-      'image',
-      'isrecent',
-      'istrending',
-    ])
+    const data = request.body()
 
     const project = await Movie.create(data)
 
-    return response.json({ project })
+    return response.ok(project)
   }
 }
