@@ -21,7 +21,7 @@ export default class MoviesController {
     return response.ok(movies)
   }
 
-  public async show({ request, response, params }: HttpContextContract) {
+  public async show({ response, params }: HttpContextContract) {
     const idmanual = params.id
     console.log('idmanual ', idmanual)
     const data = await Movie.findByOrFail('id', idmanual)
