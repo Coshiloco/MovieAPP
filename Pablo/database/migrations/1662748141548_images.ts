@@ -6,9 +6,9 @@ export default class extends BaseSchema {
   public async up() {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id')
-      table.integer('contentimageid').unsigned().notNullable().references('id').inTable('contents')
-      table.json('image_xl_md')
-      table.json('image_lg_sm')
+      table.integer('contentimageid').notNullable()
+      table.json('imagexlmd')
+      table.json('imagelgsm')
       /**
        * Uses timestamptz for PostgreSQL and DATETIME2 for MSSQL
        */

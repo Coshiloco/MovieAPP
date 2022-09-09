@@ -9,11 +9,14 @@ export default class Image extends BaseModel {
   @column({ isPrimary: true })
   public id: number
 
-  @responsiveAttachment()
-  public image_xl_md: ResponsiveAttachmentContract | null
+  @column()
+  public contentimageid: number
 
   @responsiveAttachment()
-  public image_lg_sm: ResponsiveAttachmentContract | null
+  public imagexlmd: ResponsiveAttachmentContract | null
+
+  @responsiveAttachment()
+  public imagelgsm: ResponsiveAttachmentContract | null
 
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime
