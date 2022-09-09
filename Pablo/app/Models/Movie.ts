@@ -1,3 +1,7 @@
+import {
+  responsiveAttachment,
+  ResponsiveAttachmentContract,
+} from '@ioc:Adonis/Addons/ResponsiveAttachment'
 import { BaseModel, column } from '@ioc:Adonis/Lucid/Orm'
 import { DateTime } from 'luxon'
 
@@ -20,8 +24,8 @@ export default class Movie extends BaseModel {
   @column()
   public rating: number
 
-  @column()
-  public image: Object
+  @responsiveAttachment()
+  public image: ResponsiveAttachmentContract | null
 
   @column()
   public isRecent: boolean
