@@ -30,7 +30,7 @@ export default class MoviesController {
 
   public async edit({}: HttpContextContract) {}
 
-  public async update({ request, response }: HttpContextContract) {}
+  public async update({}: HttpContextContract) {}
 
   public async destroy({}: HttpContextContract) {}
 
