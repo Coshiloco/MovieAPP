@@ -11,9 +11,9 @@ export default class extends BaseSchema {
       table.smallint('year').notNullable()
       table.string('category').notNullable()
       table.float('rating', 8, 1).notNullable()
-      table.string('image').notNullable()
-      table.boolean('isrecent').defaultTo(false).notNullable()
-      table.boolean('istrending').defaultTo(false).notNullable()
+      table.json('image').notNullable()
+      table.boolean('is_recent').defaultTo(false).notNullable()
+      table.boolean('is_trending').defaultTo(false).notNullable()
       /**
        * Uses timestamptz for PostgreSQL and DATETIME2 for MSSQL
        */

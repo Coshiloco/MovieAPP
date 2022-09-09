@@ -21,13 +21,13 @@ export default class Movie extends BaseModel {
   public rating: number
 
   @column()
-  public image: string
+  public image: Object
 
   @column()
-  public isrecent: boolean
+  public isRecent: boolean
 
   @column()
-  public istrending: boolean
+  public isTrending: boolean
 
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime
