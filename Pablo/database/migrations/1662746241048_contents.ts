@@ -11,7 +11,6 @@ export default class extends BaseSchema {
       table.smallint('year')
       table.string('category')
       table.float('rating', 8, 1)
-      table.increments('image')
       table.boolean('is_recent').defaultTo(false)
       table.boolean('is_trending').defaultTo(false)
       /**
