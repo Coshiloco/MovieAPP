@@ -1,11 +1,8 @@
-import {
-  responsiveAttachment,
-  ResponsiveAttachmentContract,
-} from '@ioc:Adonis/Addons/ResponsiveAttachment'
-import { BaseModel, column } from '@ioc:Adonis/Lucid/Orm'
+import { BaseModel, column, HasMany, hasMany } from '@ioc:Adonis/Lucid/Orm'
 import { DateTime } from 'luxon'
+import Image from './Image'
 
-export default class Movie extends BaseModel {
+export default class Content extends BaseModel {
   @column({ isPrimary: true })
   public id: number
 
@@ -24,8 +21,10 @@ export default class Movie extends BaseModel {
   @column()
   public rating: number
 
-  @responsiveAttachment()
-  public image: ResponsiveAttachmentContract | null
+  @hasMany(() => Image, {
+    foreignKey: 'contentimageid',
+  })
+  public images: HasMany<typeof Image>
 
   @column()
   public isRecent: boolean

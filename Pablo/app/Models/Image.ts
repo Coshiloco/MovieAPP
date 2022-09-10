@@ -2,8 +2,9 @@ import {
   responsiveAttachment,
   ResponsiveAttachmentContract,
 } from '@ioc:Adonis/Addons/ResponsiveAttachment'
-import { BaseModel, column } from '@ioc:Adonis/Lucid/Orm'
+import { BaseModel, BelongsTo, belongsTo, column } from '@ioc:Adonis/Lucid/Orm'
 import { DateTime } from 'luxon'
+import Content from './Content'
 
 export default class Image extends BaseModel {
   @column({ isPrimary: true })
@@ -11,6 +12,11 @@ export default class Image extends BaseModel {
 
   @column()
   public contentimageid: number
+
+  @belongsTo(() => Content, {
+    localKey: 'contentimageid',
+  })
+  public image: BelongsTo<typeof Content>
 
   @responsiveAttachment()
   public image_xl_md: ResponsiveAttachmentContract | null

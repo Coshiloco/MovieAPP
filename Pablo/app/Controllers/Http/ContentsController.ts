@@ -1,10 +1,10 @@
 import { ResponsiveAttachment } from '@ioc:Adonis/Addons/ResponsiveAttachment'
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
-import Movie from 'App/Models/Movie'
+import Content from 'App/Models/Content'
 
-export default class MoviesController {
+export default class ContentsController {
   public async index({ response }: HttpContextContract) {
-    const projects = await Movie.query()
+    const projects = await Content.query()
     return response.ok(projects)
   }
 
@@ -16,7 +16,7 @@ export default class MoviesController {
     const image = request.file('image')
     data.image = image ? await ResponsiveAttachment.fromFile(image) : null
 
-    const movies = await Movie.create(data)
+    const movies = await Content.create(data)
 
     return response.ok(movies)
   }
@@ -24,7 +24,7 @@ export default class MoviesController {
   public async show({ response, params }: HttpContextContract) {
     const idmanual = params.id
     console.log('idmanual ', idmanual)
-    const data = await Movie.findByOrFail('id', idmanual)
+    const data = await Content.findByOrFail('id', idmanual)
     return response.ok(data)
   }
 
@@ -35,7 +35,7 @@ export default class MoviesController {
   public async destroy({}: HttpContextContract) {}
 
   public async withdescription({ response }: HttpContextContract) {
-    const withDescription = await Movie.query().whereNotNull('description')
+    const withDescription = await Content.query().whereNotNull('description')
     console.log(withDescription)
     return response.ok(withDescription)
   }
