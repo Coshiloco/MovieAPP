@@ -1,5 +1,6 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Content from 'App/Models/Content'
+import Image from 'App/Models/Image'
 
 export default class ContentsController {
   public async index({ response }: HttpContextContract) {
@@ -27,6 +28,7 @@ export default class ContentsController {
     const idmanual = params.id
     console.log('idmanual ', idmanual)
     const data = await Content.findByOrFail('id', idmanual)
+    const image = await Image.findOrFail('contentimageid', idmanual)
     return response.ok(data)
   }
 
