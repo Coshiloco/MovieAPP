@@ -7,8 +7,8 @@ export default class extends BaseSchema {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id')
       table.integer('contentimageid').notNullable()
-      table.json('imagexlmd')
-      table.json('imagelgsm')
+      table.json('image_xl_md')
+      table.json('image_lg_sm')
       /**
        * Uses timestamptz for PostgreSQL and DATETIME2 for MSSQL
        */

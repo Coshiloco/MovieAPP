@@ -10,10 +10,10 @@ export default class ImagesController {
 
   public async store({ request, response }: HttpContextContract) {
     const imageobjeto = new Image()
-    const image = request.file('imagexlmd')
-    const imagedos = request.file('imagelgsm')
-    imageobjeto.imagexlmd = image ? await ResponsiveAttachment.fromFile(image) : null
-    imageobjeto.imagelgsm = imagedos ? await ResponsiveAttachment.fromFile(imagedos) : null
+    const image = request.file('image_xl_md')
+    const imagedos = request.file('image_lg_sm')
+    imageobjeto.image_xl_md = image ? await ResponsiveAttachment.fromFile(image) : null
+    imageobjeto.image_lg_sm = imagedos ? await ResponsiveAttachment.fromFile(imagedos) : null
     imageobjeto.contentimageid = request.input('contentimageid')
     const movies = await Image.create(imageobjeto)
 
