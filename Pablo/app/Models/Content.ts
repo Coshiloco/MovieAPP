@@ -1,11 +1,10 @@
-import { BaseModel, column, HasMany, hasMany } from '@ioc:Adonis/Lucid/Orm'
+import { BaseModel, column, hasMany, HasMany } from '@ioc:Adonis/Lucid/Orm'
 import { DateTime } from 'luxon'
 import Image from './Image'
 
 export default class Content extends BaseModel {
   @column({ isPrimary: true })
   public id: number
-
   @column()
   public title: string
 

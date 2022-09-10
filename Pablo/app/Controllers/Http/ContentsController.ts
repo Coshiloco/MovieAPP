@@ -1,4 +1,3 @@
-import { ResponsiveAttachment } from '@ioc:Adonis/Addons/ResponsiveAttachment'
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Content from 'App/Models/Content'
 
@@ -12,12 +11,14 @@ export default class ContentsController {
 
   public async store({ request, response }: HttpContextContract) {
     const data = request.body()
-
-    const image = request.file('image')
-    data.image = image ? await ResponsiveAttachment.fromFile(image) : null
-
-    const movies = await Content.create(data)
-
+    const movieObjeto = new Content()
+    movieObjeto.title = data.title
+    movieObjeto.description = data.description
+    movieObjeto.year = data.year
+    movieObjeto.rating = data.year
+    movieObjeto.isRecent = data.is_recent
+    movieObjeto.isTrending = data.is_trending
+    const movies = await Content.create(movieObjeto)
     return response.ok(movies)
   }
 

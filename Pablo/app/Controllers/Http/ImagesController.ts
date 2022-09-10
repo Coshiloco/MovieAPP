@@ -12,8 +12,8 @@ export default class ImagesController {
     const imageobjeto = new Image()
     const image = request.file('image_xl_md')
     const imagedos = request.file('image_lg_sm')
-    imageobjeto.image_xl_md = image ? await ResponsiveAttachment.fromFile(image) : null
-    imageobjeto.image_lg_sm = imagedos ? await ResponsiveAttachment.fromFile(imagedos) : null
+    imageobjeto.imageXlMd = image ? await ResponsiveAttachment.fromFile(image) : null
+    imageobjeto.imageLgSm = imagedos ? await ResponsiveAttachment.fromFile(imagedos) : null
     imageobjeto.contentimageid = request.input('contentimageid')
     const movies = await Image.create(imageobjeto)
 
