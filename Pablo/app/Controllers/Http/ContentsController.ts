@@ -15,6 +15,7 @@ export default class ContentsController {
     movieObjeto.title = data.title
     movieObjeto.description = data.description
     movieObjeto.year = data.year
+    movieObjeto.category = data.category
     movieObjeto.rating = data.year
     movieObjeto.isRecent = data.is_recent
     movieObjeto.isTrending = data.is_trending
