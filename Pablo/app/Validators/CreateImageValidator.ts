@@ -25,8 +25,12 @@ export default class CreateImageValidator {
    */
   public schema = schema.create({
     contentimageid: schema.number(),
-    image_xl_md: schema.file(),
-    image_lg_sm: schema.file(),
+    image_xl_md: schema.file({
+      extnames: ['jpg', 'png', 'gif'],
+    }),
+    image_lg_sm: schema.file({
+      extnames: ['jpg', 'png', 'gif'],
+    }),
   })
 
   /**
