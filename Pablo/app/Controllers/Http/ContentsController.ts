@@ -29,8 +29,8 @@ export default class ContentsController {
   public async update({ request, response, params }: HttpContextContract) {
     const idcontent = params.id
     const data = await request.validate(UpdateContentValidator)
-    const updatedcontent = await Content.query().where('id', idcontent).update(data)
-    response.ok(updatedcontent)
+    await Content.query().where('id', idcontent).update(data)
+    response.ok(data)
   }
 
   public async destroy({}: HttpContextContract) {}
