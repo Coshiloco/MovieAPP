@@ -24,7 +24,7 @@ export default class UpdateImageValidator {
    *    ```
    */
   public schema = schema.create({
-    contentimageid: schema.number(),
+    contentimageid: schema.number.optional(),
     image_xl_md: schema.file.optional(),
     image_lg_sm: schema.file.optional(),
   })
