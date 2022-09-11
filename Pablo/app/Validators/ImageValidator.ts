@@ -23,7 +23,11 @@ export default class ImageValidator {
    *     ])
    *    ```
    */
-  public schema = schema.create({})
+  public schema = schema.create({
+    contentimageid: schema.number(),
+    imageXlMd: schema.file(),
+    imageLgSm: schema.file(),
+  })
 
   /**
    * Custom messages for validation failures. You can make use of dot notation `(.)`
