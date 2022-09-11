@@ -1,5 +1,5 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
-import { CustomMessages, schema } from '@ioc:Adonis/Core/Validator'
+import { CustomMessages, rules, schema } from '@ioc:Adonis/Core/Validator'
 
 export default class UpdateContentValidator {
   constructor(protected ctx: HttpContextContract) {}
@@ -23,7 +23,29 @@ export default class UpdateContentValidator {
    *     ])
    *    ```
    */
-  public schema = schema.create({})
+  public schema = schema.create({
+    title: schema.string.nullableAndOptional({ escape: true }, [
+      rules.alpha({
+        allow: ['space'],
+      }),
+      rules.maxLength(50),
+    ]),
+    description: schema.string.nullableAndOptional({ escape: true }, [
+      rules.alpha({
+        allow: ['space'],
+      }),
+    ]),
+    year: schema.number.nullableAndOptional([rules.range(3000, 1894)]),
+    category: schema.string({ escape: true }, [
+      rules.alpha({
+        allow: ['space'],
+      }),
+      rules.maxLength(8),
+    ]),
+    rating: schema.number.nullableAndOptional(),
+    is_recent: schema.boolean.nullableAndOptional(),
+    is_trending: schema.boolean.nullableAndOptional(),
+  })
 
   /**
    * Custom messages for validation failures. You can make use of dot notation `(.)`
