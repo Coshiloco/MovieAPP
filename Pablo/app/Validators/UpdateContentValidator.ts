@@ -30,13 +30,9 @@ export default class UpdateContentValidator {
       }),
       rules.maxLength(50),
     ]),
-    description: schema.string.optional({ escape: true }, [
-      rules.alpha({
-        allow: ['space'],
-      }),
-    ]),
-    year: schema.number.optional([rules.range(3000, 1894)]),
-    category: schema.string({ escape: true }, [
+    description: schema.string.optional(),
+    year: schema.number.optional([rules.range(1894, 3000)]),
+    category: schema.string.optional({ escape: true }, [
       rules.alpha({
         allow: ['space'],
       }),
