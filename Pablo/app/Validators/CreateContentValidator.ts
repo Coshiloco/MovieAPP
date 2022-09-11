@@ -30,12 +30,8 @@ export default class CreateContentValidator {
       }),
       rules.maxLength(50),
     ]),
-    description: schema.string({ escape: true }, [
-      rules.alpha({
-        allow: ['space'],
-      }),
-    ]),
-    year: schema.number([rules.range(3000, 1894)]),
+    description: schema.string(),
+    year: schema.number([rules.range(1894, 3000)]),
     category: schema.string({ escape: true }, [
       rules.alpha({
         allow: ['space'],

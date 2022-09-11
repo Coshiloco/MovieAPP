@@ -1,6 +1,7 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Content from 'App/Models/Content'
-import CreateContent from 'App/Validators/CreateContentValidator'
+import CreateContentValidator from 'App/Validators/CreateContentValidator'
+import UpdateContentValidator from 'App/Validators/UpdateContentValidator'
 
 export default class ContentsController {
   public async index({ response }: HttpContextContract) {
@@ -11,13 +12,9 @@ export default class ContentsController {
   public async create({}: HttpContextContract) {}
 
   public async store({ request, response }: HttpContextContract) {
-    try {
-      const data = await request.validate(CreateContent)
-      const content = await Content.create(data)
-      response.ok(content)
-    } catch (error) {
-      response.badRequest(error.messages)
-    }
+    const data = await request.validate(CreateContentValidator)
+    const content = await Content.create(data)
+    response.ok(content)
   }
 
   public async show({ response, params }: HttpContextContract) {
@@ -30,14 +27,10 @@ export default class ContentsController {
   public async edit({}: HttpContextContract) {}
 
   public async update({ request, response, params }: HttpContextContract) {
-    try {
-      const idcontent = params.id
-      const data = await request.validate(CreateContent)
-      const updatedcontent = await Content.query().where('id', idcontent).update(data)
-      response.ok(updatedcontent)
-    } catch (error) {
-      response.badRequest(error.messages)
-    }
+    const idcontent = params.id
+    const data = await request.validate(UpdateContentValidator)
+    const updatedcontent = await Content.query().where('id', idcontent).update(data)
+    response.ok(updatedcontent)
   }
 
   public async destroy({}: HttpContextContract) {}
