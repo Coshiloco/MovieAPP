@@ -1,7 +1,7 @@
+import { schema, CustomMessages } from '@ioc:Adonis/Core/Validator'
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
-import { CustomMessages, schema } from '@ioc:Adonis/Core/Validator'
 
-export default class ImageValidator {
+export default class UpdateContentValidator {
   constructor(protected ctx: HttpContextContract) {}
 
   /*
@@ -23,11 +23,7 @@ export default class ImageValidator {
    *     ])
    *    ```
    */
-  public schema = schema.create({
-    contentimageid: schema.number(),
-    imageXlMd: schema.file(),
-    imageLgSm: schema.file(),
-  })
+  public schema = schema.create({})
 
   /**
    * Custom messages for validation failures. You can make use of dot notation `(.)`

@@ -18,10 +18,10 @@ export default class Image extends BaseModel {
   })
   public image: BelongsTo<typeof Content>
 
-  @responsiveAttachment()
+  @responsiveAttachment({ preComputeUrls: true })
   public imageXlMd: ResponsiveAttachmentContract | null
 
-  @responsiveAttachment()
+  @responsiveAttachment({ preComputeUrls: true })
   public imageLgSm: ResponsiveAttachmentContract | null
 
   @column.dateTime({ autoCreate: true })

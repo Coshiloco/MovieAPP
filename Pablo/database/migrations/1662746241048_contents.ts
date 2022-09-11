@@ -8,7 +8,7 @@ export default class extends BaseSchema {
       table.increments('id').primary()
       table.string('title')
       table.string('description')
-      table.smallint('year')
+      table.integer('year', 4)
       table.string('category')
       table.float('rating', 8, 1)
       table.boolean('is_recent').defaultTo(false)
