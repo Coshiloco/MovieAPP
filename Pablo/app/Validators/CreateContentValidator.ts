@@ -24,27 +24,27 @@ export default class CreateContentValidator {
    *    ```
    */
   public schema = schema.create({
-    title: schema.string.nullableAndOptional({ escape: true }, [
+    title: schema.string({ escape: true }, [
       rules.alpha({
         allow: ['space'],
       }),
       rules.maxLength(50),
     ]),
-    description: schema.string.nullableAndOptional({ escape: true }, [
+    description: schema.string({ escape: true }, [
       rules.alpha({
         allow: ['space'],
       }),
     ]),
-    year: schema.number.nullableAndOptional([rules.range(3000, 1894)]),
+    year: schema.number([rules.range(3000, 1894)]),
     category: schema.string({ escape: true }, [
       rules.alpha({
         allow: ['space'],
       }),
       rules.maxLength(8),
     ]),
-    rating: schema.number.nullableAndOptional(),
-    is_recent: schema.boolean.nullableAndOptional(),
-    is_trending: schema.boolean.nullableAndOptional(),
+    rating: schema.number(),
+    is_recent: schema.boolean(),
+    is_trending: schema.boolean(),
   })
 
   /**
