@@ -26,6 +26,7 @@ Route.get('/', async () => {
 
 Route.group(() => {
   Route.resource('', 'ContentsController').apiOnly()
+  Route.resource('/auth', 'UsersController').apiOnly()
   Route.resource('/images', 'ImagesController').apiOnly()
   Route.get('/withdescription', 'ContentsController.withdescription')
 }).prefix('/api/movies')
