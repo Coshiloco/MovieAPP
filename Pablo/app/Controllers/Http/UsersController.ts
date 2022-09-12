@@ -31,11 +31,11 @@ export default class UsersController {
 
   public async login({ auth, request, response }: HttpContextContract) {
     // grab uid and password values off request body
+    await request.validate(CreateUserAuthValidator)
     const { email, password } = request.only(['email', 'password'])
     console.log('uid ', email)
     // attempt to login
     const data = await auth.attempt(email, password)
-
     // otherwise, redirect to home page
     return response.ok(data)
   }
