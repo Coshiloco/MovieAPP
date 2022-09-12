@@ -14,8 +14,9 @@ export default class UsersController {
     const user = await User.create(data)
 
     // login the user using the user model record
-    await auth.login(user)
+    const token = await auth.login(user)
 
+    user.remember_me_token = token
     // redirect to the login page
     return response.ok(user)
   }
@@ -28,5 +29,14 @@ export default class UsersController {
 
   public async destroy({}: HttpContextContract) {}
 
-  public async login({}: HttpContextContract) {}
+  public async login({ auth, request, response }: HttpContextContract) {
+    // grab uid and password values off request body
+    const { email, password } = request.only(['email', 'password'])
+    console.log('uid ', email)
+    // attempt to login
+    const data = await auth.attempt(email, password)
+
+    // otherwise, redirect to home page
+    return response.ok(data)
+  }
 }
